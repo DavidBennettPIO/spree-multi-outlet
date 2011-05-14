@@ -10,15 +10,14 @@ This allows you to have redshop.example.com blueshop.example.com and www.example
 Install
 =======
 
-Add to you Gemfile:
-`gem "spree_multi_domain", :git => 'git://github.com/spree/spree-multi-domain.git'`
-`gem "spree_multi_outlet", :git => 'git://github.com/complistic-gaff/spree-multi-outlet.git'`
+Add to you Gemfile:  
+`gem "spree_multi_domain", :git => 'git://github.com/spree/spree-multi-domain.git'
+gem "spree_multi_outlet", :git => 'git://github.com/complistic-gaff/spree-multi-outlet.git'`
 
-Then run these commands from your rails root
-
-`bundle install`
-`rake spree_multi_outlet:install`
-`rake db:migrate`
+Then run these commands from your rails root:  
+`bundle install
+rake spree_multi_outlet:install
+rake db:migrate`
 
 
 Copyright (c) 2011 David Bennett, released under the New BSD License
