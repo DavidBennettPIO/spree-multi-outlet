@@ -1,0 +1,36 @@
+<h1>Store Prices</h1>
+
+<table class="index">
+  <tr>
+    <th><%= t("store") %></th>
+    <th><%= t("variant") %></th>
+    <th><%= t("price") %></th>
+    <% if Spree::Config[:track_inventory_levels] %>
+      <th><%= t("on_hand") %></th>
+    <% end %>
+    <th><%= t("action") %></th>
+  </tr>
+  <tr>
+  <% if Spree::Config[:track_inventory_levels] %>
+    <td colspan="5"><%= t("new_store_price") %></th>
+  <% else %>
+    <td colspan="4"><%= t("new_store_price") %></th>
+  <% end %>
+  </tr>
+  <tr>
+  <%= form_for(@store_price, :as => :store_price, :url => admin_product_store_prices_path(params[:product_id])) do |f| %>
+    <%= render 'form', {:f => f, :store_price => @store_price} %>
+  <% end %>
+  <tr>
+  <% if Spree::Config[:track_inventory_levels] %>
+    <td colspan="5"><%= t("store_prices") %></th>
+  <% else %>
+    <td colspan="4"><%= t("store_prices") %></th>
+  <% end %>
+  </tr>
+<% @store_prices.each do |store_price| %>
+  <%= form_for(store_price, :as => :store_price, :url => admin_product_store_price_path(params[:product_id], store_price), :html => { :method => :put }) do |f| %>
+    <%= render 'form', {:f => f, :store_price => store_price} %>
+  <% end %>
+<% end %>
+</table>

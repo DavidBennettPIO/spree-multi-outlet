@@ -1,0 +1,2 @@
+module StorePricesHelper
+end

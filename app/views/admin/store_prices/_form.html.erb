@@ -1,0 +1,25 @@
+<tr>
+  <td>
+    <%= f.select :store_id, options_from_collection_for_select(@product.stores, :id, :name, store_price.store_id) %>
+  </td>
+  <td>
+    <%= f.select :parent_id, options_from_collection_for_select(@product.parent_variants_including_master, :id, :variant_name, store_price.parent_id) %>
+  </td>
+  <td>
+    <%= f.text_field :price, {"style" => "width:50px"} %>
+  </td>
+  <td>
+<% if Spree::Config[:track_inventory_levels] %>
+    <%= f.text_field :on_hand, {"style" => "width:50px"} %>
+  </td>
+  <td>
+<% end %>
+    <%= f.hidden_field :product_id, :value => @product.id %>
+<% if store_price.store_id.nil?%>
+    <%= f.submit :value => "Add" %>
+<% else %>
+    <%= f.hidden_field :id, :value => store_price.id %>
+    <%= f.submit :value => "Edit" %>
+<% end %>
+  </td>
+</tr>
